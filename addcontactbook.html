@@ -1,0 +1,31 @@
+{% extends 'temp2.html'%}
+{% block body %}
+<body>
+<form action="/addcontactbook_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table width="200" border="1">
+    <tr>
+      <td>Department</td>
+      <td><input type="text" name="textfield" /></td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td><input type="text" name="textfield2" /></td>
+    </tr>
+    <tr>
+      <td>Email id </td>
+         <td><input type="text" name="textfield3" /></td>
+    </tr>
+    <tr>
+      <td>Phone Number </td>
+         <td><input type="text" name="textfield4" /></td>
+    </tr>
+    <!--<tr>-->
+      <!--<td>Photo</td>-->
+      <!--<td><input type="file" name="file" /></td>-->
+    <!--</tr>-->
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="Submit" value="Add" /></td>
+    </tr>
+  </table>
+</form>
+</body>{% end block %}

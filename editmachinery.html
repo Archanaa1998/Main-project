@@ -1,0 +1,37 @@
+{% extends 'temp2.html'%}
+{% block body %}
+
+<body>
+<form action="" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table width="200" border="1">
+    <tr>
+      <td>Name</td>
+      <td><input type="text" name="textfield" /></td>
+    </tr>
+    <tr>
+      <td>Model Number </td>
+      <td><input type="text" name="textfield2" /></td>
+    </tr>
+    <tr>
+      <td>Photo</td>
+      <td><input type="file" name="file" /></td>
+    </tr>
+    <tr>
+      <td>Rent Amount </td>
+      <td><input type="text" name="textfield3" /></td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td><textarea name="textarea"></textarea></td>
+    </tr>
+    <tr>
+      <td>Purpose</td>
+      <td><input type="text" name="textfield4" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="Submit" value="Save changes" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% end block %}
