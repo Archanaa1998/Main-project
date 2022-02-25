@@ -1,0 +1,35 @@
+{% extends 'temp2.html'%}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="263" border="1">
+    <tr>
+      <td width="144">Purpose</td>
+      <td width="45"><input type="text" name="textfield3" /></td>
+      <td width="52"><input type="submit" name="Submit2" value="Filter" /></td>
+    </tr>
+  </table>
+  <input type="submit" name="Submit22" value="Add" />
+  <table width="200" border="1">
+     {% for i in data %}
+    <tr>
+      <td colspan="2">Name</td><td>{{ i["name"]}}</td>
+    </tr>
+    <tr>
+      <td colspan="2">photo</td><td><img src="{{ i["photo"]}}" alt=""/></td></tr>
+<tr>    <td colspan="2">
+        Model number</td><td>{{ i["modelno"]}}</td></tr>
+<tr>    <td colspan="2">Rent amount</td><td>{{ i["rentamount"]}}</td></tr>
+<tr>    <td colspan="2">description</p> <p>&nbsp;</p></td><td>{{ i["description"]}}</td>
+    </tr>
+    <tr>
+      <td width="97"><a href="#">Edit</a></td>
+      <td width="87"><a href="#">Delete</a></td>
+    </tr>
+        {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+</form>
+</body>
+{% endblock %}

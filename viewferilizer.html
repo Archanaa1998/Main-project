@@ -1,0 +1,39 @@
+{% extends 'temp2.html'%}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="487" border="1">
+
+    <tr>
+      <td width="17">Category </td>
+      <td width="144"><select name="select">
+        </select>      </td>
+      <td width="45"><input type="submit" name="Submit" value="Filter" /></td>
+      <td width="144">Name</td>
+      <td width="45"><input type="text" name="textfield3" /></td>
+      <td width="52"><input type="submit" name="Submit2" value="Filter" /></td>
+    </tr>
+  </table>
+  <input type="submit" name="Submit22" value="Add" />
+  <table width="200" border="1">
+    {% for i in data %}
+    <tr>
+      <td colspan="2">Type</td> <td>{{ i["type"]}}</td>
+    </tr>
+    <tr>
+      <td colspan="2">Name</td> <td>{{ i["name"]}}</td></tr>
+<tr>    <td colspan="2">
+        photo</td> <td><img src="{{ i["photo"]}}" alt=""/></td></tr>
+<tr>    <td colspan="2">
+     description <p>&nbsp;</p> <td>{{ i["description"]}}</td></td>
+    </tr>
+      <td><a href="#">Edit</a></td>
+      <td><a href="#">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+</form>
+</body>
+{% endblock %}

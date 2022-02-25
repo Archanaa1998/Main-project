@@ -1,0 +1,43 @@
+{% extends 'temp2.html'%}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="676" border="1">
+
+    <tr>
+      <td width="33">From</td>
+      <td width="144"><input type="text" name="textfield" /></td>
+      <td width="17">To</td>
+      <td width="144"><input type="text" name="textfield2" /></td>
+      <td width="45"><input type="submit" name="Submit" value="Filter" /></td>
+      <td width="144">Subject</td>
+      <td width="45"><input type="text" name="textfield3"/></td>
+      <td width="52"><input type="submit" name="Submit2" value="Filter" /></td>
+    </tr>
+  </table>
+  <input type="submit" name="Submit22" value="Add" />
+  <table width="200" border="1">
+    {% for i in data %}
+    <tr>
+      <td>Date</td>
+      <td>{{ i["date"]}}</td>
+    </tr>
+    <tr>
+
+      <td>Subject</td>
+      <td>{{ i["subject"]}}</td>
+    </tr>
+
+    <tr>
+      <td>Nottification</td>
+      <td>{{ i["notification"]}}</td>
+    </tr>
+    <tr>
+      <td><a href="#">Edit</a></td>
+      <td><a href="#">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  </form>
+</body>
+{% endblock %}

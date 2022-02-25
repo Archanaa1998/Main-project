@@ -1,0 +1,49 @@
+{% extends 'temp2.html'%}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/viewcropfilter_post">
+  <table class="table table-hover">
+
+    <tr>
+      <td width="17">Category</td>
+      <td width="200"><select name="select">
+        {% for i in cat %}
+        <option value="{{i['category']}}">{{ i["category"]}}</option>
+        {% endfor %}
+        </select>      </td>
+      <td width="45"><input type="submit" name="Submit" value="Filter" style="background-color:green;color:white"/></td>
+      <td align="right" width="50">Name</td>
+      <td width="45"><input type="text" name="textfield3" /></td>
+      <td width="52"><input type="submit" name="Submit" value="Go" style="background-color:green;color:white"/></td>
+    </tr>
+
+  </table><hr>
+  <div align="right">
+  <!--<a href="/addcrop"  class="btn btn-primary">+</a></div>-->
+    <a href="/addcrop" ><i class="fa fa-plus-circle" style="font-size:48px;color:green"></i></a></div>
+    <!--<button style="background-color:green"><a href="/addcrop"><i class="fa fa-plus" aria-hidden="true" style="color:white"></i></a></button></div>-->
+ <!---->
+  <!--<input type="submit" name="Submit22" value="Add"/><br><br>-->
+  <td width="200" class="table table-hover"><br><br>
+      {% for i in data %}
+    <table class="table table-hover">
+    <tr bgcolor="green" style="color:white">
+      <td>Category:  &nbsp;{{ i["category"]}}
+      <p align="right">Name:  &nbsp;{{ i["name"]}}</p></td>
+    </tr></table><br><br>
+    <tr>
+      <br><br><center><td colspan="2"><p></td></tr><td><img width="400px" height="300px" src=" {{ i['photo']}}" ></td></center></td>
+   <td colspan="8"><p><td>{{ i["description"]}}</td>
+    </tr><br><br>
+
+      <button style="background-color:green"><a href="/editcrop/{{i['cropid']}}" style="color:white">Edit</a></button>
+      <p align="right" ><button style="background-color:red"><a href="/deletecrop/{{i['cropid']}}" style="color:white">Delete</a></button></p>
+
+  <hr>
+    {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+</form>
+</body>
+{% endblock %}
