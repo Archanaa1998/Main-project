@@ -1,32 +1,34 @@
+
 {% extends 'temp2.html'%}
 {% block body %}
 
 <body>
-<form action="" method="post" enctype="multipart/form-data" name="form1" id="form1">
-  <table width="200" border="1">
+<form action="/editmachinery_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table class="table table-hover" align="center" width="300px" height="300px">
+
     <tr>
-      <td>Name</td>
-      <td><input type="text" name="textfield" /></td>
+      <td colspan="2" align="center">Name</td>
+      <td><input type="text" name="textfield" value="{{data['name']}}"/><input type="hidden" name="mid" value="{{data['mid']}}"></td>
     </tr>
     <tr>
-      <td>Model Number </td>
-      <td><input type="text" name="textfield2" /></td>
+      <td colspan="2" align="center">Model Number </td>
+      <td><input type="text" name="textfield2" value="{{data['modelno']}}"/></td>
     </tr>
     <tr>
-      <td>Photo</td>
-      <td><input type="file" name="file" /></td>
+      <td colspan="2" align="center">Photo</td>
+      <td><input type="file" name="file" value="{{data['photo']}}"/></td>
     </tr>
     <tr>
-      <td>Rent Amount </td>
-      <td><input type="text" name="textfield3" /></td>
+      <td colspan="2" align="center">Rent Amount </td>
+      <td><input type="text" name="textfield3" value="{{data['rentamount']}}"/></td>
     </tr>
     <tr>
-      <td>Description</td>
-      <td><textarea name="textarea"></textarea></td>
+      <td colspan="2" align="center">Description</td>
+      <td><textarea name="textarea" value="{{data['description']}}"></textarea></td>
     </tr>
     <tr>
-      <td>Purpose</td>
-      <td><input type="text" name="textfield4" /></td>
+      <td colspan="2" align="center">Purpose</td>
+      <td><input type="text" name="textfield4" value="{{data['purpose']}}"/></td>
     </tr>
     <tr>
       <td colspan="2" align="center"><input type="submit" name="Submit" value="Save changes" /></td>
@@ -34,4 +36,12 @@
   </table>
 </form>
 </body>
-{% end block %}
+{% endblock %}
+
+
+
+
+
+
+
+

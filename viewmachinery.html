@@ -1,35 +1,54 @@
+
 {% extends 'temp2.html'%}
 {% block body %}
 
 <body>
-<form id="form1" name="form1" method="post" action="">
-  <table width="263" border="1">
+<form id="form1" name="form1" method="post" action="/viewmachineryfilter_post">
+   <table class="table table-hover">
     <tr>
       <td width="144">Purpose</td>
+        <td width="200"><select name="select">
+        {% for i in pur %}
+        <option value="{{i['purpose']}}">{{ i["purpose"]}}</option>
+        {% endfor %}
+        </select>      </td>
+
+      <td width="52"><input type="submit" name="Submit" value="Filter"  style="background-color:green;color:white" /></td>
+        <td align="right" width="50">Name</td>
       <td width="45"><input type="text" name="textfield3" /></td>
-      <td width="52"><input type="submit" name="Submit2" value="Filter" /></td>
+      <td width="52"><input type="submit" name="Submit" value="Go" style="background-color:green;color:white"/></td>
     </tr>
-  </table>
-  <input type="submit" name="Submit22" value="Add" />
-  <table width="200" border="1">
-     {% for i in data %}
+  </table><hr>
+     <div align="right">
+<a href="/addmachinery" ><i class="fa fa-plus-circle" style="font-size:48px;color:green"></i></a></div>
+
+    <td width="200" class="table table-hover"><br><br>
+      {% for i in data %}
+    <table class="table table-hover">
+    <tr bgcolor="green" style="color:white">
+
+        <td>Purpose:  &nbsp;{{ i["purpose"]}}</td><td><p align="right">Name:  &nbsp;{{ i["name"]}}</p></td>
+    </tr></table><br><br>
     <tr>
-      <td colspan="2">Name</td><td>{{ i["name"]}}</td>
-    </tr>
-    <tr>
-      <td colspan="2">photo</td><td><img src="{{ i["photo"]}}" alt=""/></td></tr>
-<tr>    <td colspan="2">
+      <br><br><center><td colspan="2"><p></td></tr><td><img width="400px" height="300px" src=" {{ i['photo']}}" ></td></td>
+
+<tr>    <td colspan="2"><br>
         Model number</td><td>{{ i["modelno"]}}</td></tr>
-<tr>    <td colspan="2">Rent amount</td><td>{{ i["rentamount"]}}</td></tr>
-<tr>    <td colspan="2">description</p> <p>&nbsp;</p></td><td>{{ i["description"]}}</td>
+<tr>    <br><td colspan="2">Rent amount:</td><td>{{ i["rentamount"]}}</td></tr>
+<tr>   <br> <td colspan="2">description:</p> <p>&nbsp;</p>{{ i["description"]}}</td></center>
     </tr>
     <tr>
-      <td width="97"><a href="#">Edit</a></td>
-      <td width="87"><a href="#">Delete</a></td>
-    </tr>
+      <td><button style="background-color:green"><a href="/editmachinery/{{i['mid']}}" style="color:white">Edit</a></button></td>
+      <td><p align="right" ><button style="background-color:red"><a href="/deletemachinery/{{i['mid']}}" style="color:white" onclick="return confirm('Do u want to delete this?')">Delete</a></button></p>
+      </td></tr>
+    </tr><hr>
         {% endfor %}
   </table>
   <p>&nbsp;</p>
 </form>
 </body>
 {% endblock %}
+
+
+
+
