@@ -1,0 +1,56 @@
+{% extends 'temp2.html'%}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/viewfertilizerfilter_post">
+  <table class="table table-hover">
+
+    <tr>
+      <td width="17">Type </td>
+      <td width="144"><select name="select">
+           {% for i in cat %}
+        <option value="{{i['type']}}">{{ i["type"]}}</option>
+        {% endfor %}
+        </select>      </td>
+      <td width="45"><input type="submit" name="Submit" value="Filter" style="background-color:green;color:white"/></td>
+      <td width="144">Name</td>
+      <td width="45"><input type="text" name="textfield3" /></td>
+      <td width="52"><input type="submit" name="Submit" value="Go" style="background-color:green;color:white"/></td>
+    </tr>
+  </table>
+  <hr>
+     <div align="right">
+<a href="/addfertilizer" ><i class="fa fa-plus-circle" style="font-size:48px;color:green"></i></a></div>
+
+    <td width="200" class="table table-hover"><br><br>
+      {% for i in data %}
+    <table class="table table-hover">
+       <tr bgcolor="green" style="color:white">
+
+        <td>Category:  &nbsp;{{ i["type"]}}</td><td><p align="right">Name:  &nbsp;{{ i["name"]}}</p></td>
+    </tr></table><br><br>
+  <!--<table class="table table-hover">-->
+
+    <!--&lt;!&ndash;<tr bgcolor="green" style="color:white">&ndash;&gt;-->
+      <!--<tr><td colspan="2">Name</td> <td>{{ i["name"]}}</td></tr>-->
+
+    <!--</tr>-->
+    <!--<tr><td colspan="2">Type</td> <td>{{ i["type"]}}</td>-->
+
+<tr>    <td colspan="2">
+  </td> <br><br><center><td colspan="2"><p></td></tr><td><img width="400px" height="300px" src="{{ i['photo']}}" ></td></td></tr>
+<tr>    <td colspan="8"><p><td>{{ i["description"]}}</td>
+    </tr>
+     <br><br><table class="table table-hover">
+       <tr bgcolor="lightgrey" style="color:white">
+
+
+      <td><button style="background-color:green"><a href="/editfertilizer/{{i['fpid']}}" style="color:white">Edit</a></button></td>
+      <td><p align="right" ><button style="background-color:red"><a href="/deletefertilizer/{{i['fpid']}}" style="color:white" onclick="return confirm('Do u want to delete this?')">Delete</a></button></p>
+      </tr></table><br><br><hr>
+        {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+</form>
+</body>
+{% endblock %}

@@ -2,28 +2,30 @@
 {% block body %}
 
 <body>
-<form id="form1" name="form1" method="post" action="">
-  <table width="200" border="1">
+<form id="form1" name="form1" method="post" enctype="multipart/form-data" action="/editfertilizer_post">
+  <table class="table table-hover" align="center" width="300px" height="300px">
     <tr>
-      <td>Type</td>
-      <td><input type="text" name="textfield" /></td>
+
+      <td colspan="2" align="center">Type</td>
+      <td><input type="text" name="textfield"value="{{data['type']}}"  /><input type="hidden" name="fid" value="{{data['fpid']}}">
+    </td>
     </tr>
     <tr>
-      <td>Name</td>
-      <td><input type="text" name="textfield2" /></td>
+      <td colspan="2" align="center">Name</td>
+      <td><input type="text" name="textfield2" value="{{data['name']}}" /></td>
     </tr>
     <tr>
-      <td>Description</td>
-      <td>&nbsp;<input type="text" name="textfield3" /></td>
+      <td colspan="2" align="center">Description</td>
+      <td height="100"><textarea name="textfield3" style="height:150;width:400">{{data['description']}}</textarea></td>
     </tr>
     <tr>
-      <td>Photo</td>
-      <td><input type="file" name="file" /></td>
+      <td colspan="2" align="center">Photo</td>
+      <td><input type="file" name="textfield4" /></td>
     </tr>
     <tr>
-      <td colspan="2" align="center"><input type="submit" name="Submit" value="Add" /></td>
+      <td colspan="2" align="center"><input type="submit" name="Submit" value="Save changes" style="background-color:green;color:white"/></td>
     </tr>
   </table>
 </form>
 </body>
-{% end block %}
+{% endblock %}
