@@ -2,39 +2,67 @@
 {% block body %}
 
 <body>
-<form id="form1" name="form1" method="post" action="">
-  <table width="200" border="1">
+<form id="form1" name="form1" method="post" action="/viewfeedbackfilter_post">
+  <h4 align="center" style="color:green"><b> Feedback</b></h4><br>
+  <table class="table table-hover" width="250" border="1">
     <tr>
       <td>From</td>
-      <td><input type="text" name="textfield" /></td>
-      <td>To</td>
-      <td><input type="text" name="textfield2" /></td>
-      <td><input type="submit" name="Submit" value="Filter" /></td>
+      <td width="200"><input type="date" name="textfield" /></td>
+
+      <td> To</td>
+      <td><input type="date" name="textfield2" /></td>
+      <td><input type="submit" name="Submit" value="Filter" style="background-color:green;color:white" /></td>
     </tr>
   </table>
   <p>&nbsp;</p>
-  <table width="200" border="1">
-    <tr>
-      <td>Date</td>
-      <td>Subject</td>
-    </tr>
-    <tr>
-      <td colspan="2">Date</td></tr>
-    <td colspan="2">product</td></tr>
-    <td colspan="2">seller name</td></tr>
-<tr>    <td colspan="2">feedback
-      <p>&nbsp;</p></td>
-  <td colspan="2">status</td></tr>
-    </tr>
-    <tr>
-      <td><a href="#">Reply</a></td>
-      <td><a href="#">Delete</a></td>
-    </tr>
-  </table>
-</form>
-</body>
-</html>
+  <table class="table table-hover">
+    <tr  style="background-color:green;color:white">
+      <td colspan="2">Slno</td>
+      <td colspan="2">Date</td>
+    <td colspan="2">Product Name</td>
+    <td colspan="2">Seller name</td>
+   <td colspan="2">Feedback
+     <p>&nbsp;</p></td></tr>
 
+
+      <!--<td><a href="#">Reply</a></td>-->
+      <!--<td>Delete</a></td>-->
+   {% for i in range(l) %}
+
+
+    <!--date={{i["date"]}}.strftime("%d-%m-%y")-->
+    <tr>
+      <td colspan="2">{{ loop.index }}</td>
+      <!--<td>{{ data[i ]}}&nbsp;</td>-->
+      <td colspan="2">&nbsp;&nbsp;&nbsp;{{ d[i ]}}&nbsp;</td>
+      <td colspan="2">&nbsp;{{ data[i]["pname"]}}&nbsp;</td>
+      <td colspan="2">&nbsp;{{ data[i]["uname"]}}&nbsp;</td>
+
+      <td colspan="2">&nbsp;&nbsp;&nbsp;{{ data[i]["feedback"]}}&nbsp;</td>
+      <!--<td><a href="/approve/{{ data[i]['mrid'] }}/{{ data[i]['email'] }}/{{ data[i]['mname']}}" class="btn btn-primary">Approve</a><br><p></p><a href="/reject/{{ data[i]['mrid'] }}/{{ data[i]['email'] }}/{{ data[i]['mname']}}" onclick="return confirm('Are u sure u want to reject this request?')" class="btn btn-danger">Reject</a></td>-->
+
+
+      <!--<td>&nbsp;{{ data[i]["noofdays"]}}&nbsp;</td>-->
+      <!--<td>&nbsp;{{ data[i]["total"]}}&nbsp;</td>-->
+      <!--{% if data[i]['status'] =="pending"%}-->
+      <!--<td><a href="/approve/{{ data[i]['mrid'] }}/{{ data[i]['email'] }}/{{ data[i]['mname']}}" class="btn btn-primary">Approve</a><br><p></p><a href="/reject/{{ data[i]['mrid'] }}/{{ data[i]['email'] }}/{{ data[i]['mname']}}" onclick="return confirm('Are u sure u want to reject this request?')" class="btn btn-danger">Reject</a></td>-->
+
+      <!--{% else %}-->
+         <!--{% if data[i]['status'] =="Approved" %}-->
+      <!--<td colspan="2" align="center">-->
+
+        <!--<span style="color:green"><b>{{ data[i]['status'] }}</b></span>-->
+      <!--</td>-->
+      <!--{%else %}-->
+       <!--<td colspan="2" align="center">-->
+
+         <!--<span style="color:red"><b>{{ data[i]['status'] }}</b></span>-->
+      <!--</td>-->
+      <!--{% endif %}-->
+      <!--{% endif %}-->
+    </tr>
+{% endfor %}
+  </table>
 </form>
 </body>
 {% endblock %}
