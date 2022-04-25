@@ -2,42 +2,65 @@
 {% block body %}
 
 <body>
-<form id="form1" name="form1" method="post" action="">
-  <table width="228" border="1">
+<form id="form1" name="form1" method="post" action="/viewcontactbookfilter_post">
+    <h4 align="center" style="color:green"><b>View Contact Book</b></h4><br>
+  <table class="table table-hover" width="250" border="1">
+
     <tr>
-      <td width="17">Department </td>
+      <td width="17" >Department </td>
       <td width="144"><select name="select">
+          {% for i in sub %}
+          {% if session["sub"]==i["department"] %}
+        <option value="{{i['department']}}">{{ i["department"]}}</option>
+          {%else %}
+                  <option value="{{i['department']}}" >{{ i["department"]}}</option>
+          {%endif %}
+        {% endfor %}
         </select>      </td>
+
       <td width="45"><input type="submit" name="Submit" value="Filter" /></td>
     </tr>
   </table>
-  <input type="submit" name="Submit22" value="Add" />
-  <table width="200" border="1">
+  <div align="right">
+<a href="/addcontactbook" ><i class="fa fa-plus-circle" style="font-size:48px;color:green"></i></a></div><br>
+   <table width="900" border="1" align="center"  style="border-spacing: 30px">
       {% for i in data %}
        <tr>
-      <td colspan="2">Department</td>
-        <td>{{ i["department"]}}</td>
+      <td colspan="2" style="padding: 15px">Department</td>
+        <td style="padding: 15px">{{ i["department"]}}</td>
     </tr>
     <tr>
-      <td colspan="2">Name</td>
-        <td>{{ i["name"]}}</td>
+      <td style="padding: 15px" colspan="2">Name</td>
+        <td style="padding: 15px">{{ i["name"]}}</td>
     </tr>
 
-<tr>    <td colspan="2">
+<tr>    <td style="padding: 15px" colspan="2">
         Emailid</td>
-    <td>{{ i["emailid"]}}</td>
+    <td style="padding: 15px">{{ i["emailid"]}}</td>
 </tr>
-<tr>    <td colspan="2">
+<tr>    <td style="padding: 15px" colspan="2">
      Phone number
          </td>
-    <td>{{ i["phoneno"]}}</td>
+    <td style="padding: 15px">{{ i["phoneno"]}}</td>
     </tr>
-      <td><a href="#">Edit</a></td>
-      <td><a href="#">Delete</a></td>
+
+       <tr bgcolor="white" style="color:white">
+    <td style="padding: 15px" colspan="2"><p align="left" ><button style="background-color:green;width:100;height:40"><a href="/editcontactbook/{{i['contactbookid']}}" style="color:white">Edit</a></button>
+        <td align="center"><p align="right" ><button style="background-color:red;width:100;height:40"><a href="/deletecontactbook/{{i['contactbookid']}}" style="color:white" onclick="return confirm('Do u want to delete this?')">Delete</a></button></p></td>
+
+       </tr>
+    <tr  style="color:white;background-color: #005757">
+      <td style="padding: 25px"  colspan="2"></td><td style="padding: 15px"></td></tr>
+  </tr>
+
+
+
+
     </tr>
-      {% endfor %}
+    {% endfor %}</table><br>
+  </table><br>
+    </tr>
   </table>
-  <p>&nbsp;</p>
 </form>
 </body>
-{% end block %}
+{% endblock %}

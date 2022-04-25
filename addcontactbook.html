@@ -1,23 +1,27 @@
 {% extends 'temp2.html'%}
 {% block body %}
 <body>
-<form action="/addcontactbook_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
-  <table width="200" border="1">
+<form action="/addcontactbook_post" method="post" name="form1" id="form1">
+   <table width="500" border="1" height="200" align="center"><br>
+     <h4 align="center" style="color:green"><b>Add Contact Book</b></h4><br><br>
+
     <tr>
-      <td>Department</td>
-      <td><input type="text" name="textfield" /></td>
+      <td style="padding: 15px">Department</td>
+      <td style="padding: 15px"><input type="text" name="textfield" required/></td>
     </tr>
     <tr>
-      <td>Name</td>
-      <td><input type="text" name="textfield2" /></td>
+      <td style="padding: 15px">Name</td>
+      <td style="padding: 15px"><input type="text" name="textfield2" required/></td>
     </tr>
     <tr>
-      <td>Email id </td>
-         <td><input type="text" name="textfield3" /></td>
+      <td style="padding: 15px">Email id </td>
+         <td style="padding: 15px"><input type="email" name="textfield3" required/></td>
     </tr>
     <tr>
-      <td>Phone Number </td>
-         <td><input type="text" name="textfield4" /></td>
+      <td style="padding: 15px">Phone Number </td>
+        <td style="padding: 15px"><input type="number" name="textfield4" size="10" required ></td>
+
+             <!--<input type="number" name="textfield4" required/></td>-->
     </tr>
     <!--<tr>-->
       <!--<td>Photo</td>-->
@@ -28,4 +32,4 @@
     </tr>
   </table>
 </form>
-</body>{% end block %}
+</body>{% endblock %}
