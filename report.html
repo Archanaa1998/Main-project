@@ -1,0 +1,76 @@
+{% extends 'temp2.html'%}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="#">
+    <h4 align="center" style="color:green"><b>View Report</b></h4><br><br>
+
+    <div id="f1">
+
+
+   <table class="table table-hover"><br>
+       <!--<tr>&nbsp;&nbsp;&nbsp;&nbsp;Date:</tr>{{ tdate}}<br><br>-->
+        <tr  style="background-color:green;color:white;height:60px">
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Slno</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Purpose</td>
+
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Machinery Name </td>
+
+
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status </td>
+
+
+    </tr>
+        {% for i in data %}
+
+
+    <!--date={{i["date"]}}.strftime("%d-%m-%y")-->
+    <tr style="height:40px">
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ loop.index }}</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ i["purpose"]}}&nbsp;</td>
+
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ i["name"]}}</td>
+
+
+
+
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ i["status"]}}&nbsp;</td>
+
+    </tr>
+
+{% endfor %}
+
+
+  </table>
+    </div>
+     <table id="print1">
+      <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+             </tr><br><br>
+          <tr> <input type="submit" style="background-color:green;color:white" value="Download" name="submit" onclick="printDiv()" name="Download"></tr>
+
+</table>
+</form>
+
+</body>
+
+
+<script>
+
+        function printDiv() {
+            var divContents = document.getElementById("f1").innerHTML;
+            var a = window.open('', '', 'height=500, width=500');
+            a.document.write('<html>');
+            a.document.write('<body > <h1>Machinery Details <br>');
+            a.document.write(divContents);
+            a.document.write('</body></html>');
+            a.document.close();
+            a.print();
+        }
+</script>
+
+{% endblock %}

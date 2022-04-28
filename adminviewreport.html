@@ -1,0 +1,236 @@
+{% extends 'temp2.html'%}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/viewreportfilter_post">
+    <h4 align="center" style="color:green"><b>View Report</b></h4><input type="hidden" name="ty" id="ty" value="{{ty}}"><br><br>
+
+      <!--<td width="45"><input style="margin-left:100px;background-color:green;color:white" type="submit" name="Submit" value="Machinery"/><input style="margin-left:600px;background-color:green;color:white" type="submit" name="Submit" value="Product" /></td><br><br>-->
+    <tr><label style="margin-left:350px">Choose  </label>
+        <td width="144">
+        <select name="select1" style="width:150;height:30" required>
+            <option value="01">Machinery</option>
+            <option value="02">Product</option>
+
+        </select><br><br>
+
+            <label style="margin-left:320px"> Choose Year</label>
+      <td width="200"><select name="select2" style="width:150;height:30">
+        {% for i in y %}
+        <option value="{{i['YEAR(dt)']}}">{{ i["YEAR(dt)"]}}</option>
+        {% endfor %}
+      </select>      </td></tr><br><br>
+     <!--<label style="margin-left:300px" >Choose Year </label>-->
+        <!--<td width="144">-->
+        <!--<select name="select1" style="width:150;height:30">-->
+            <!--<option value="01">Machinery</option>-->
+            <!--<option value="02">Product</option>-->
+
+        <!--</select></td><br><br>-->
+
+  <table class="table table-hover" width="250" border="1">
+
+    <tr>
+
+
+
+ <td width="17" >Month </td><td>
+      <input type="checkbox" id="month1" name="month" value="1">
+<label for="month1">January</label>&nbsp;&nbsp;
+<input type="checkbox" id="month2" name="month" value="2">
+<label for="month2"> February</label>&nbsp;&nbsp;
+<input type="checkbox" id="month3" name="month" value="3">
+<label for="month3">March</label>&nbsp;&nbsp;
+        <input type="checkbox" id="month4" name="month" value="4">
+<label for="month4">April</label>&nbsp;&nbsp;
+        <input type="checkbox" id="month5" name="month" value="5">
+<label for="month5">May</label>&nbsp;&nbsp;
+          <input type="checkbox" id="month6" name="month" value="6">
+<label for="month6">June</label>&nbsp;&nbsp;
+        <input type="checkbox" id="month7" name="month" value="7">
+
+        <label for="month7">July</label>&nbsp;&nbsp;
+          <input type="checkbox" id="month8" name="month" value="8">
+<label for="month8">August</label>&nbsp;&nbsp;
+        <input type="checkbox" id="month9" name="month" value="9">
+<label for="month8">September</label>&nbsp;&nbsp;
+             <input type="checkbox" id="month10" name="month" value="10">
+
+        <label for="month10">October</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="checkbox" id="month11" name="month" value="11">
+<label for="month11">November</label>&nbsp;&nbsp;
+        <input type="checkbox" id="month12" name="month" value="12">
+<label for="month12">December</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input style="margin-left:600;background-color:green;color:white" type="submit" id="lll" name="submit" value="Submit">
+    </td>
+  </table>
+  <!--<div align="right">-->
+<!--<a href="/addcontactbook" ><i class="fa fa-plus-circle" style="font-size:48px;color:green"></i></a></div><br>-->
+<div id="f1">
+    <table class="table table-hover" id="kk">
+
+           <!--<tr>&nbsp;&nbsp;&nbsp;&nbsp;Date:</tr>{{ tdate}}<br><br>-->
+    <tr  style="background-color:green;color:white">
+      <td>Slno</td>
+      <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date</td>-->
+      <td>Machinery Name </td>
+      <td>&nbsp;&nbsp;&nbsp;User info</td>
+      <!--<td>Contact </td>-->
+      <!--<td>Phone No</td>-->
+
+      <td>No of days</td>
+
+      <td>&nbsp;Total</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Status</td>
+
+      <td colspan="2">&nbsp;</td>
+    </tr>
+
+    {% for i in data1 %}
+
+
+    <!--date={{i["date"]}}.strftime("%d-%m-%y")-->
+    <tr>
+      <td>{{ loop.index }}</td>
+
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ i["mname"]}}</td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{i["uname"]}}<br>{{ i["place"]}}&nbsp;<br>{{ i["phoneno"]}}&nbsp;</td>
+
+
+
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ i["noofdays"]}}&nbsp;</td>
+      <td>&nbsp;&nbsp;{{ i["total"]}}&nbsp;</td>
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ i["mstatus"]}}&nbsp;</td>
+
+    </tr>
+{% endfor %}
+
+  </table>
+
+</div>
+<table id="print1">
+      <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td> <input type="submit" style="background-color:green;color:white" value="Download" name="submit" onclick="printDiv()" name="Download"></td>
+        </tr>
+</table>
+
+<div id="f2">
+
+     <table class="table table-hover" id="kkp">
+
+           <!--<tr>&nbsp;&nbsp;&nbsp;&nbsp;Date:</tr>{{ tdate}}<br><br>-->
+    <tr  style="background-color:green;color:white">
+      <td>Slno</td>
+      <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date</td>-->
+      <td>&nbsp;&nbsp;&nbsp;Category </td>
+      <td>&nbsp;&nbsp;&nbsp;Name</td>
+      <!--<td>Contact </td>-->
+      <!--<td>Phone No</td>-->
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;quantity Produced</td>
+      <td>Quantity purchased</td>
+
+
+
+      <td colspan="2">&nbsp;</td>
+    </tr>
+
+    {% for i in data %}
+
+
+    <!--date={{i["date"]}}.strftime("%d-%m-%y")-->
+    <tr>
+      <td>{{ loop.index }}</td>
+
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ i["category"]}}</td>
+      <td>&nbsp;&nbsp;{{i["pname"]}}</td>
+
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ i["q1"]}}&nbsp;</td>
+
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ i["qty"]}}&nbsp;</td>
+
+
+    </tr>
+{% endfor %}
+
+  </table>
+
+</div>
+     <table id="print2">
+        <tr>
+             <td> <input type="submit" style="margin-left:800;margin-top:20;background-color:green;color:white" value="Download" onclick="printDiv2()"  name="submit"name="Download"></td>
+         </tr>
+    </table>
+    <!--<input type="submit" style="margin-left:800;margin-top:20;background-color:green;color:white" value="Download" name="Download">-->
+
+
+</form>
+</body>
+
+
+<script src="/static/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+ ty=$("#ty").val()
+
+
+ if(ty=="m"){
+ $("#kk").show();
+   $("#print1").show();
+
+  $("#kkp").hide();
+   $("#print2").hide();
+
+ }
+ else if (ty=="p"){
+ $("#kk").hide();
+ $("#print1").hide();
+
+  $("#kkp").show();
+   $("#print2").show();
+
+ }
+ else{
+  $("#kk").hide();
+    $("#print1").hide();
+  $("#kkp").hide();
+    $("#print2").hide();
+ }
+
+
+
+});
+
+
+
+ function printDiv() {
+            var divContents = document.getElementById("f1").innerHTML;
+            var a = window.open('', '', 'height=500, width=500');
+            a.document.write('<html>');
+            a.document.write('<body > <h1>Report <br>');
+            a.document.write(divContents);
+            a.document.write('</body></html>');
+            a.document.close();
+            a.print();
+        }
+
+
+        function printDiv2() {
+            var divContents = document.getElementById("f2").innerHTML;
+            var a = window.open('', '', 'height=500, width=500');
+            a.document.write('<html>');
+            a.document.write('<body > <h1>Div contents are <br>');
+            a.document.write(divContents);
+            a.document.write('</body></html>');
+            a.document.close();
+            a.print();
+        }
+
+
+</script>
+{% endblock %}
